@@ -25,12 +25,13 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp({
-      apiKey: "AIzaSyAOf-59bhKidnZ3xZBdS_0Pt77g3a6NllQ",
-      authDomain: "pond-b8861.firebaseapp.com",
-      databaseURL: "https://pond-b8861.firebaseio.com",
-      projectId: "pond-b8861",
-      storageBucket: "pond-b8861.appspot.com",
-      messagingSenderId: "761650598572"
+      apiKey: "AIzaSyDGzMjdqbGbiEPDh7lECKmjpJQQ9yBiWbU",
+      authDomain: "mumsthatbake-344ec.firebaseapp.com",
+      databaseURL: "https://mumsthatbake-344ec.firebaseio.com",
+      projectId: "mumsthatbake-344ec",
+      storageBucket: "mumsthatbake-344ec.appspot.com",
+      messagingSenderId: "488547476934",
+      appId: "1:488547476934:web:cabee5c7b2db74a20dbec7"
     }),
     AngularFirestoreModule,
     AngularFireAuthModule,
