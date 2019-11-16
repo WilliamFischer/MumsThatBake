@@ -13,7 +13,7 @@ export class RoomPage implements OnInit {
   inRoom: boolean;
 
   checkForRooms: any;
-  roomIDS: any;
+  roomIDS: any = [];
 
   constructor(
     public fireStore: AngularFirestore,
@@ -50,7 +50,7 @@ export class RoomPage implements OnInit {
         if(this.roomID == eachImg['id']){
           if(eachImg['id']){
             console.log('MATCH FOUND')
-            this.roomIDS.push(eachImg)
+            this.roomIDS.push(eachImg['id'])
           }
         }
       });
