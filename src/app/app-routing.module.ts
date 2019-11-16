@@ -12,6 +12,10 @@ const routes: Routes = [
     path: 'room/:id',
     loadChildren: () => import('./room/room.module').then( m => m.RoomPageModule)
   },
+  {
+    path: 'cryptography-test',
+    loadChildren: () => import('./cryptography-test/cryptography-test.module').then( m => m.CryptographyTestPageModule)
+  },
 ];
 
 @NgModule({
