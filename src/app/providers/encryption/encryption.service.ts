@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { NodeRsa } from 'node-rsa';
+import * as crypto from 'crypto-js';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EncryptionService {
 
-  constructor() {
-    var key = new NodeRsa({b: 512});
-    console.log(key);
+  constructor(){}
+
+  generateKeypair() {
   }
+
 }
