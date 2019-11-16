@@ -1,9 +1,9 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>room</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="noRoomText" *ngIf="waitingMode">
+      <h1>New Room Added! <br /> Waiting for someone to join...</h1>
+  </div>
 
+  <div class="noRoomText" *ngIf="inRoom">
+      <h1>welcome to room #{{roomID}}</h1>
+  </div>
 </ion-content>

@@ -21,4 +21,8 @@ export class JoinRoomPage implements OnInit {
     }
   }
 
+  makeRoom(){
+    
+  }
+
 }
