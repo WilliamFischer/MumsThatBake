@@ -13,6 +13,7 @@ export class RoomPage implements OnInit {
   inRoom: boolean;
 
   checkForRooms: any;
+  roomIDS: any;
 
   constructor(
     public fireStore: AngularFirestore,
@@ -44,30 +45,27 @@ export class RoomPage implements OnInit {
     this.roomID = window.location.pathname.replace('/room/', '')
 
     this.checkForRooms = this.fireStore.collection('Rooms').valueChanges().subscribe(values => {
-      //console.log(values);
-      let roomIDS = [];
-
       values.forEach(eachImg => {
         console.log(this.roomID + ' VS ' + eachImg['id'])
         if(this.roomID == eachImg['id']){
-          console.log('MATCH FOUND')
-          roomIDS.push(eachImg)
+          if(eachImg['id']){
+            console.log('MATCH FOUND')
+            this.roomIDS.push(eachImg)
+          }
         }
       });
-
-      setTimeout(()=>{
-        console.log('loop complete;')
-        console.log(roomIDS);
-
-        if(roomIDS[0]){
-          this.joinRoom();
-        }else{
-          this.createRoom();
-        }
-      }, 1500);
-
-
     });
+
+    setTimeout(()=>{
+      console.log('loop complete;')
+      console.log(this.roomIDS);
+
+      if(!this.roomIDS || !this.roomIDS[0]){
+        this.createRoom();
+      }else{
+        this.joinRoom();
+      }
+    }, 2000);
 
   }
 
@@ -84,19 +82,22 @@ export class RoomPage implements OnInit {
       console.log('Room Added');
       this.doneChecking();
       this.waitingMode = true;
-      this.inRoom = false;
 
-      this.checkForRooms = this.fireStore.doc('Rooms/' + this.roomID).valueChanges().subscribe(value => {
-        console.log("UPDATE TO ROOM")
-        console.log(value);
+      setTimeout(()=>{
+        this.checkForRooms = roomAddress.valueChanges().subscribe(value => {
+          console.log("UPDATE TO ROOM")
+          console.log(value);
 
-        if(value['usersInRoom']){
-          this.inRoom = true;
-        }else{
-          this.inRoom = false;
-        }
+          if(value['usersInRoom'] == 2){
+            this.inRoom = true;
+            this.waitingMode = false;
+          }else{
+            this.inRoom = false;
+            this.waitingMode = true;
+          }
 
-      });
+        });
+      }, 3000);
 
     });
   }
