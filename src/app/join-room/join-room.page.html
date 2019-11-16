@@ -1,9 +1,8 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>joinRoom</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <input [(ngModel)]="room" type="string" placeholder="Room ID"/>
+
+  <div class="goButton" (click)="joinRoom()" *ngIf="room.length == 4">
+    Continue
+  </div>
 
 </ion-content>

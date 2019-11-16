@@ -9,7 +9,7 @@ const routes: Routes = [
     loadChildren: () => import('./join-room/join-room.module').then( m => m.JoinRoomPageModule)
   },
   {
-    path: 'room',
+    path: 'room/:id',
     loadChildren: () => import('./room/room.module').then( m => m.RoomPageModule)
   },
   {
